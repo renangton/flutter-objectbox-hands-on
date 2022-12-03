@@ -1,17 +1,55 @@
-# flutter_objectbox_hands_on
+# 概要
 
-A new Flutter project.
+FlutterでObjectBox（ローカルDB）を利用したアプリを作成するためのガイドプロジェクトです。
 
-## Getting Started
+# 前提条件
 
-This project is a starting point for a Flutter application.
+- Flutterをインストールしていること
+    - Windows環境構築手順
+        - https://blog.css-net.co.jp/entry/2022/05/30/133942
+- Android Studioをインストールしていること
+- GitHubアカウントを持っていること
 
-A few resources to get you started if this is your first Flutter project:
+# ハンズオンをすすめるにあたって
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+このハンズオンをすすめるにあたってPull Requestの作成およびレビューを求める箇所があります。 ただ、ご自身のみで進めても問題ございませんので必要がないと判断されれば特にPull Requestの作成やレビュー依頼はせず進めてもらって結構です。
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# flutter-objectbox-hands-on
+# 準備
+
+まずはこのハンズオンのリポジトリをforkしてください。 forkできましたら、ご自身のローカルPCにcloneしてエディタでプロジェクトを開いてください。
+
+参考: https://docs.github.com/ja/get-started/quickstart/fork-a-repo
+
+# 追加するパッケージについて
+
+## dependenciesに追加
+
+- objectbox
+    - https://pub.dev/packages/objectbox
+- objectbox_flutter_libs
+    - https://pub.dev/packages/objectbox_flutter_libs
+
+下記コマンドをターミナルで実行
+`flutter pub add objectbox objectbox_flutter_libs`
+
+## dev_dependenciesに追加
+
+- build_runner
+    - https://pub.dev/packages/build_runner
+- objectbox_generator
+    - https://pub.dev/packages/objectbox_generator
+
+下記コマンドをターミナルで実行
+`flutter pub add -d build_runner objectbox_generator`
+
+# 起動手順
+
+1. Android Studioでエミュレータを作成
+    - https://blog.css-net.co.jp/entry/2022/06/06/112045
+2. デバイスを選択し、起動
+3. エミュレータで実行
+    - https://developer.android.com/training/basics/firstapp/running-app?hl=ja#Emulator
+
+# スクリーンショット
+
+![](../../Users/Public/Pictures/shoppingmemo.png)
