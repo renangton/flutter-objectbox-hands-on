@@ -29,7 +29,8 @@ FlutterでObjectBox（ローカルDB）を利用したアプリを作成する�
 - objectbox_flutter_libs
     - https://pub.dev/packages/objectbox_flutter_libs
 
-下記コマンドをターミナルで実行
+下記コマンドをターミナルで実行  
+※すでに実行済みのため、clone後にご自身のローカルリポジトリで実行する必要はありません
 
 `flutter pub add objectbox objectbox_flutter_libs`
 
@@ -40,7 +41,8 @@ FlutterでObjectBox（ローカルDB）を利用したアプリを作成する�
 - objectbox_generator
     - https://pub.dev/packages/objectbox_generator
 
-下記コマンドをターミナルで実行
+下記コマンドをターミナルで実行  
+※すでに実行済みのため、clone後にご自身のローカルリポジトリで実行する必要はありません
 
 `flutter pub add -d build_runner objectbox_generator`
 
