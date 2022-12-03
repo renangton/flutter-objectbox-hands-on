@@ -1,29 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_objectbox_hands_on/model/ShoppingMemo.dart';
 import 'package:flutter_objectbox_hands_on/objectbox.g.dart';
-import 'package:flutter_objectbox_hands_on/view/ToDoPage.dart';
 
-class ShoppingMemoPage extends StatefulWidget {
-  const ShoppingMemoPage({Key? key}) : super(key: key);
+import 'ShoppingMemoPage.dart';
+
+class ToDoPage extends StatefulWidget {
+  const ToDoPage({Key? key}) : super(key: key);
 
   @override
-  State<ShoppingMemoPage> createState() => _ShoppingMemoPageState();
+  State<ToDoPage> createState() => _ToDoPageState();
 }
 
-class _ShoppingMemoPageState extends State<ShoppingMemoPage> {
+class _ToDoPageState extends State<ToDoPage> {
   // ObjectBoxの利用にstoreが必要
   Store? store;
-  Box<ShoppingMemo>? shoppingMemoBox;
-  List<ShoppingMemo> shoppingMemoList = [];
 
   // 投稿後の内容を削除するためのもの
   final controller = TextEditingController();
 
+  // ToDo 要修正
+  List<String> sampleList = ["hoge", "fuga", "piyo"];
+
   Future<void> initialize() async {
     // storeの作成にopenStore()という非同期関数の実行が必要
     store = await openStore();
-    shoppingMemoBox = store?.box<ShoppingMemo>();
-    fetchShoppingMemoList();
   }
 
   // この関数の中の処理は初回に一度だけ実行される
@@ -33,37 +32,32 @@ class _ShoppingMemoPageState extends State<ShoppingMemoPage> {
     initialize();
   }
 
-  // BoxからShoppingMemo一覧を取得
-  void fetchShoppingMemoList() {
-    shoppingMemoList = shoppingMemoBox?.getAll() ?? [];
-    setState(() {});
-  }
-
   // controllerを使う時はdisposeが必要
   @override
   void dispose() {
     super.dispose();
+    store?.close();
     controller.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.amber[100],
+      backgroundColor: Colors.blue[100],
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.blueAccent,
         centerTitle: true,
         title: Text(
-          "買い物リスト",
+          "ToDoリスト",
           style: TextStyle(fontSize: 32, color: Colors.amber[300]),
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.checklist, size: 28),
+            icon: const Icon(Icons.shopping_cart, size: 28),
             onPressed: () {
               store?.close();
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const ToDoPage()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const ShoppingMemoPage()));
             },
           )
         ],
@@ -72,38 +66,24 @@ class _ShoppingMemoPageState extends State<ShoppingMemoPage> {
         children: [
           Expanded(
             child: ListView.builder(
-              itemCount: shoppingMemoList.length,
+              itemCount: sampleList.length,
               itemBuilder: (context, index) {
-                final shoppingMemo = shoppingMemoList[index];
+                final sample = sampleList[index];
                 return Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Row(
                     children: [
-                      // チェックボックスの表示
-                      Transform.scale(
-                        scale: 1.3,
-                        child: Checkbox(
-                          activeColor: Colors.blue,
-                          value: shoppingMemo.check,
-                          onChanged: (bool? checkBoxState) {
-                            shoppingMemo.check = checkBoxState!;
-                            shoppingMemoBox?.put(shoppingMemo);
-                            fetchShoppingMemoList();
-                          },
-                        ),
-                      ),
-                      // 買い物リストの内容を表示
+                      // ToDoリストの内容を表示
                       Expanded(
                         child: Text(
-                          shoppingMemo.memo,
-                          style: TextStyle(fontSize: 28, color: shoppingMemo.check ? Colors.grey : Colors.black),
+                          sample,
+                          style: const TextStyle(fontSize: 28),
                         ),
                       ),
-                      // 買い物リストの削除
+                      // ToDoリストの削除
                       IconButton(
                         onPressed: () {
-                          shoppingMemoBox?.remove(shoppingMemo.id);
-                          fetchShoppingMemoList();
+                          // ToDo ToDoリストの削除処理を実装
                         },
                         icon: const Icon(Icons.delete, size: 28),
                       )
@@ -118,12 +98,12 @@ class _ShoppingMemoPageState extends State<ShoppingMemoPage> {
             child: TextFormField(
               controller: controller,
               decoration: InputDecoration(
-                hintText: '買い物リスト追加',
-                fillColor: Colors.green[200],
+                hintText: 'ToDoリスト追加',
+                fillColor: Colors.blue[500],
                 filled: true,
                 enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: Colors.amber,
+                    color: Colors.deepPurpleAccent,
                     width: 1,
                   ),
                 ),
@@ -135,11 +115,7 @@ class _ShoppingMemoPageState extends State<ShoppingMemoPage> {
                 ),
               ),
               onFieldSubmitted: (text) {
-                if (text != "") {
-                  final newShoppingMemo = ShoppingMemo(memo: text, check: false);
-                  shoppingMemoBox?.put(newShoppingMemo);
-                  fetchShoppingMemoList();
-                }
+                // ToDo ToDoリストの登録処理を実装
                 controller.clear();
               },
             ),
