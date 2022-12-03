@@ -36,7 +36,6 @@ class _ToDoPageState extends State<ToDoPage> {
   @override
   void dispose() {
     super.dispose();
-    store?.close();
     controller.dispose();
   }
 
