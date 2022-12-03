@@ -52,7 +52,11 @@ FlutterでObjectBox（ローカルDB）を利用したアプリを作成する�
 3. エミュレータで実行
     - https://developer.android.com/training/basics/firstapp/running-app?hl=ja#Emulator
 
-# スクリーンショット
-![shoppingmemo](https://user-images.githubusercontent.com/97335620/205445395-1d9506f5-affb-4142-9887-8a46de96298d.png)
+# アプリ操作方法
+買い物リストでは、買う物の登録と削除、チェックボックスで購入済みかどうかを判別することができます。
+ToDoリストはToDoが表示されていますが、仮データを表示しているだけで、登録処理、削除処理は実装していないので、
+買い物リストへの遷移以外は操作することができません。
+
+![shopping](https://user-images.githubusercontent.com/97335620/205461617-97ad735e-1230-43de-95b6-6ea4a12685f6.gif)
 
 
