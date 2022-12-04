@@ -63,7 +63,7 @@ ToDoリストはToDoが表示されていますが、仮データを表示して
 
 # ToDoクラスを定義してみましょう
 下記の手順で実施してください。
-1. `model/ToDo.dart`を作成し、下記を記述してください。
+1. `model/ToDo.dart`を作成し、下記を記述しましょう。
 ```dart
 import 'package:objectbox/objectbox.dart';
 
@@ -89,3 +89,39 @@ libフォルダの`objectbox-model.json`と`objectbox.g.dart`が追加されれ�
 更新されるだけです。
 
 # ToDo一覧の取得処理を実装してみましょう
+下記の手順で実施してください。  
+1. ToDoクラスが格納されるBoxを取得しましょう。 
+- 参考箇所
+https://github.com/renangton/flutter-objectbox-hands-on/blob/a6f95f3a21c213eac383f93028e7fa7732488aa2/lib/view/ShoppingMemoPage.dart#L16
+https://github.com/renangton/flutter-objectbox-hands-on/blob/a6f95f3a21c213eac383f93028e7fa7732488aa2/lib/view/ShoppingMemoPage.dart#L25
+2. ToDo一覧を取得しましょう。
+ToDo一覧の取得処理は複数回使用するため、fetchToDoList()関数を作成して処理をまとめます。
+- 参考箇所
+https://github.com/renangton/flutter-objectbox-hands-on/blob/a6f95f3a21c213eac383f93028e7fa7732488aa2/lib/view/ShoppingMemoPage.dart#L17
+https://github.com/renangton/flutter-objectbox-hands-on/blob/a6f95f3a21c213eac383f93028e7fa7732488aa2/lib/view/ShoppingMemoPage.dart#L37-L40
+https://github.com/renangton/flutter-objectbox-hands-on/blob/a6f95f3a21c213eac383f93028e7fa7732488aa2/lib/view/ShoppingMemoPage.dart#L26
+3. 取得したToDo一覧を表示させましょう。
+現在は仮で入れたListを表示するようにしているため、2.で取得したList<ToDo>のtodoが表示されるようにListViewを修正しましょう。  
+修正後も初期データが登録されておらず、登録処理もまだ未実装のため、まだToDoの表示はできません。
+- 参考箇所
+https://github.com/renangton/flutter-objectbox-hands-on/blob/a6f95f3a21c213eac383f93028e7fa7732488aa2/lib/view/ShoppingMemoPage.dart#L74-L77
+https://github.com/renangton/flutter-objectbox-hands-on/blob/a6f95f3a21c213eac383f93028e7fa7732488aa2/lib/view/ShoppingMemoPage.dart#L98
+
+# ToDoの登録処理を実装しましょう
+文字列を入力するためのTextFormFieldは追加済みのため、TextFormFieldに入力された文字列を登録するための処理を実装します。
+- 参考箇所
+https://github.com/renangton/flutter-objectbox-hands-on/blob/a6f95f3a21c213eac383f93028e7fa7732488aa2/lib/view/ShoppingMemoPage.dart#L138-L142
+
+# ToDoの削除処理を実装しましょう
+ToDoを削除するためのボタンを追加済みのため、ボタンを押した時にToDoを削除するための処理を実装します。
+- 参考箇所
+https://github.com/renangton/flutter-objectbox-hands-on/blob/a6f95f3a21c213eac383f93028e7fa7732488aa2/lib/view/ShoppingMemoPage.dart#L105-L106
+    
+# チェックボックスを追加しましょう
+- 参考箇所
+https://github.com/renangton/flutter-objectbox-hands-on/blob/a6f95f3a21c213eac383f93028e7fa7732488aa2/lib/view/ShoppingMemoPage.dart#L83-L94
+表示されるToDoのテキストの色はデフォルトで黒となっているため、チェックボックスがアクティブになっている時は、灰色になるように修正しましょう。
+- 参考箇所
+https://github.com/renangton/flutter-objectbox-hands-on/blob/a6f95f3a21c213eac383f93028e7fa7732488aa2/lib/view/ShoppingMemoPage.dart#L99
+    
+完成したらPull Requestを作成してください。
