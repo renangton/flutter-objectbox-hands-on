@@ -61,4 +61,31 @@ ToDoリストはToDoが表示されていますが、仮データを表示して
 
 ![shopping](https://user-images.githubusercontent.com/97335620/205461617-97ad735e-1230-43de-95b6-6ea4a12685f6.gif)
 
+# ToDoクラスを定義してみましょう
+下記の手順で実施してください。
+1. `model/ToDo.dart`を作成し、下記を記述してください。
+```dart
+import 'package:objectbox/objectbox.dart';
 
+@Entity()
+class ToDo {
+
+  int id = 0;
+
+  String todo;
+
+  bool check = false;
+
+  ShoppingMemo({
+    required this.todo,
+    required this.check
+  });
+}
+```
+2. ToDoクラスをObjectBoxで扱えるようにするために、下記コマンドをターミナルで実行し、コードを自動生成しましょう。  
+`flutter pub run build_runner build`  
+libフォルダの`objectbox-model.json`と`objectbox.g.dart`が追加されれば成功です。  
+今回はShoppingMemoクラス作成時に上記コマンドを実行しており、`objectbox-model.json`と`objectbox.g.dart`は作成済みであるため、
+更新されるだけです。
+
+# ToDo一覧の取得処理を実装してみましょう
