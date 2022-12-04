@@ -23,6 +23,7 @@ class _ToDoPageState extends State<ToDoPage> {
   Future<void> initialize() async {
     // storeの作成にopenStore()という非同期関数の実行が必要
     store = await openStore();
+    setState(() {});
   }
 
   // この関数の中の処理は初回に一度だけ実行される
