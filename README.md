@@ -76,17 +76,23 @@ class ToDo {
 
   bool check = false;
 
-  ShoppingMemo({
+  ToDo({
     required this.todo,
     required this.check
   });
 }
 ```
 2. ToDoクラスをObjectBoxで扱えるようにするために、下記コマンドをターミナルで実行し、コードを自動生成しましょう。  
-`flutter pub run build_runner build`  
+`$ flutter pub run build_runner build`  
 libフォルダの`objectbox-model.json`と`objectbox.g.dart`が追加されれば成功です。  
-今回はShoppingMemoクラス作成時に上記コマンドを実行しており、`objectbox-model.json`と`objectbox.g.dart`は作成済みであるため、
-更新されるだけです。
+```
+[INFO] Found 1 declared outputs which already exist on disk. This is likely because the`.dart_tool/build` folder was deleted, or you are submitting generated files to your source repository.
+[SEVERE] Conflicting outputs were detected and the build is unable to prompt for permission to remove them. These outputs must be removed manually or the build can be run with `--delete-conflicting-outputs`. The outputs are: lib/objectbox.g.dart
+pub finished with exit code 78
+```
+上記内容のエラーが発生した場合は、下記のコマンドを再度実行してください。  
+`$ flutter pub run build_runner build --delete-conflicting-outputs`
+今回はShoppingMemoクラス作成時に、`objectbox-model.json`と`objectbox.g.dart`は作成済みであるため、ファイルが更新されるだけです。
 
 # ToDo一覧の取得処理を実装してみましょう
 下記の手順で実施してください。  
@@ -106,6 +112,9 @@ https://github.com/renangton/flutter-objectbox-hands-on/blob/a6f95f3a21c213eac38
 - 参考箇所
 https://github.com/renangton/flutter-objectbox-hands-on/blob/a6f95f3a21c213eac383f93028e7fa7732488aa2/lib/view/ShoppingMemoPage.dart#L74-L77
 https://github.com/renangton/flutter-objectbox-hands-on/blob/a6f95f3a21c213eac383f93028e7fa7732488aa2/lib/view/ShoppingMemoPage.dart#L98
+4. 不要なコードを削除しましょう。
+- 対象箇所
+https://github.com/renangton/flutter-objectbox-hands-on/blob/b052ba720760cc645c4418088a90c286469bcc6c/lib/view/ToDoPage.dart#L20-L21
 
 # ToDoの登録処理を実装しましょう
 文字列を入力するためのTextFormFieldは追加済みのため、TextFormFieldに入力された文字列を登録するための処理を実装します。
