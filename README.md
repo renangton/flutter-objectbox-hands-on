@@ -91,7 +91,7 @@ libフォルダの`objectbox-model.json`と`objectbox.g.dart`が追加されれ�
 pub finished with exit code 78
 ```
 上記内容のエラーが発生した場合は、下記のコマンドを再度実行してください。  
-`$ flutter pub run build_runner build --delete-conflicting-outputs`
+`$ flutter pub run build_runner build --delete-conflicting-outputs`  
 今回はShoppingMemoクラス作成時に、`objectbox-model.json`と`objectbox.g.dart`は作成済みであるため、ファイルが更新されるだけです。
 
 # ToDo一覧の取得処理を実装してみましょう
