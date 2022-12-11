@@ -7,6 +7,9 @@ FlutterでObjectBox（ローカルDB）を利用したアプリを作成する�
 - Flutterをインストールしていること
     - Windows環境構築手順
         - https://blog.css-net.co.jp/entry/2022/05/30/133942
+    - Mac環境構築手順
+        - https://docs.flutter.dev/get-started/install/macos
+        - https://zenn.dev/kboy/books/ca6a9c93fd23f3/viewer/5232dc
 - Android Studioをインストールしていること
 - GitHubアカウントを持っていること
 
